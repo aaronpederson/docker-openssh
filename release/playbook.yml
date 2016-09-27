@@ -1,0 +1,34 @@
+---
+- connection: local
+  hosts: localhost
+  roles:
+    - role: telusdigital.openssh
+
+  vars:
+    openssh_client: no
+    openssh_server: no
+    openssh_ports:
+      - 22
+
+    openssh_default_ciphers:
+      - chacha20-poly1305@openssh.com
+      - aes256-gcm@openssh.com
+    openssh_default_key_exchange_algorithms:
+      - curve25519-sha256@libssh.org
+      - diffie-hellman-group-exchange-sha256
+    openssh_default_mac_algorithms:
+      - hmac-sha2-512-etm@openssh.com
+      - hmac-sha2-256-etm@openssh.com
+      - umac-128-etm@openssh.com
+
+    openssh_append_ciphers: []
+    openssh_append_key_exchange_algorithms: []
+    openssh_append_mac_algorithms: []
+
+    openssh_ciphers: "{{ openssh_default_ciphers | union (openssh_append_ciphers) }}"
+    openssh_key_exchange_algorithms: "{{ openssh_default_key_exchange_algorithms | union (openssh_append_key_exchange_algorithms) }}"
+    openssh_mac_algorithms: "{{ openssh_default_mac_algorithms | union (openssh_append_mac_algorithms) }}"
+
+    openssh_host_keys:
+      - /etc/ssh/ssh_host_ed25519_key
+      - /etc/ssh/ssh_host_rsa_key

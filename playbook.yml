@@ -1,5 +1,0 @@
----
-- connection: local
-  hosts: localhost
-  roles:
-    - role: telusdigital.openssh

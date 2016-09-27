@@ -1,0 +1,25 @@
+# {{ ansible_managed }}
+
+{% for port in openssh_ports %}
+Port {{ port }}
+{% endfor %}
+
+{% for host_key in openssh_host_keys %}
+HostKey {{ host_key }}
+{% endfor %}
+
+Ciphers {{ openssh_ciphers | reject('upper') | join(',') }}
+KexAlgorithms {{ openssh_key_exchange_algorithms | reject('upper') | join(',') }}
+MACs {{ openssh_mac_algorithms | reject('upper') | join(',') }}
+
+ChallengeResponseAuthentication no
+PasswordAuthentication no
+UsePAM yes
+
+# Brute force bug
+KbdInteractiveAuthentication no
+
+AcceptEnv LANG LC_*
+PrintMotd no
+Subsystem sftp /usr/lib/openssh/sftp-server
+UseDNS no
