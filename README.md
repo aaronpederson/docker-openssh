@@ -2,7 +2,7 @@
 
 [Openssh](https://www.openssh.com) - Is the premier connectivity tool for remote login with the SSH protocol.
 
-[![Platforms](http://img.shields.io/badge/platforms-ubuntu-lightgrey.svg?style=flat)](#)
+![Platforms](http://img.shields.io/badge/platforms-ubuntu-lightgrey.svg?style=flat)[![](https://images.microbadger.com/badges/image/aaronpederson/openssh.svg)](https://microbadger.com/images/aaronpederson/openssh "Get your own image badge on microbadger.com")
 
 Tunables
 --------
